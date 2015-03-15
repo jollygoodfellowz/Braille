@@ -1,0 +1,477 @@
+/*   
+          0   1
+      -------------         <---- Example of what braille looks like.
+      0|  1   0             <---- This is the letter A
+       | ----------         
+      1|  0   0
+       | ----------
+      2|  0   0
+*/
+#define PWM_3 3    
+#define PWM_5 5   
+#define PWM_6 6    
+#define PWM_9 9    
+#define PWM_10 10  
+#define PWM_11 11  
+
+// The uppercase letters min and max 
+#define A 65
+#define Z 90
+
+#define MAXPWM 6
+
+// Global varial that holds the values of all the PWM values
+int PWMs[MAXPWM] = {3,5,6,9,10,11};
+
+// the setup routine runs once when you press reset:
+void setup() {                
+  // initialize the digital pin as an output.
+  pinMode(PWM_3, OUTPUT);  
+  pinMode(PWM_5, OUTPUT);
+  pinMode(PWM_6, OUTPUT);
+  pinMode(PWM_9, OUTPUT);
+  pinMode(PWM_10, OUTPUT);
+  pinMode(PWM_11, OUTPUT);
+}
+
+// Interpret the message recieved, boolean array representing braille alphabet
+int sendPWM(bool PWMloc[]) {
+
+  int i;
+  for(i = 0; i < MAXPWM; i++) {
+    
+    // If the index has a value of 1 then we match this to the PWM that represents the motor
+    if(PWMloc) {
+      
+      // Vibrate and then turn it off
+      analogWrite(PWMs[i], 80);
+      analogWrite(PWMs[i], 0);
+    }
+  }
+/ to the PWM that represents the motor
+    if(PWMloc[i]) {
+      
+      // Vibrate and then turn it off
+      analogWrite(PWMs[i], 80);
+      analogWrite(PWMs[i], 0);
+    }
+}
+  
+}
+
+// Find out what character we have
+void interpretChar(char c){
+  
+  // Essentially this converts an upper case character to a lower case
+  if(c >= A && c <= Z) {
+    c += 32;             // Increment by this much to reach lower case letters in ascii table
+  }
+  
+  // Find the letter we have
+  if(c == 'a') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           0,0,
+                           0,0};
+    sendPWM(PWMloc);
+  } 
+  
+  else if(c == 'b') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           1,0,
+                           0,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'c') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           0,0,
+                           0,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'd') {
+    bool PWMloc[MAXPWM] = {1,1,
+                           0,1,
+                           0,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'e') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           0,1,
+                           0,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'f') {
+    bool PWMloc[MAXPWM] = {1,1,
+                           1,0,
+                           0,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'g') {
+    bool PWMloc[MAXPWM] = {1,1,
+                           1,1,
+                           0,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'h') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           1,1,
+                           0,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'i') {
+    bool PWMloc[MAXPWM] = {0,1,
+                           1,0,
+                           0,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'j') {
+    bool PWMloc[MAXPWM] = {0,1,
+                           1,1,
+                           0,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'k') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           0,0,
+                           1,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'l') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           1,0,
+                           1,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'm') {
+    bool PWMloc[MAXPWM] = {1,1,
+                           0,0,
+                           1,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'n') {
+    bool PWMloc[MAXPWM] = {1,1,
+                           0,1,
+                           1,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'o') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           0,1,
+                           1,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'p') {
+    bool PWMloc[MAXPWM] = {1,1,
+                           1,0,
+                           1,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'q') {
+    bool PWMloc[MAXPWM] = {1,1,
+                           1,1,
+                           1,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'r') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           1,1,
+                           1,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 's') {
+    bool PWMloc[MAXPWM] = {0,1,
+                           1,0,
+                           1,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 't') {
+    bool PWMloc[MAXPWM] = {0,1,
+                           1,1,
+                           1,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'u') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           0,0,
+                           1,1};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'v') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           1,0,
+                           1,1};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'w') {
+    bool PWMloc[MAXPWM] = {0,1,
+                           1,1,
+                           0,1};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'x') {
+    bool PWMloc[MAXPWM] = {1,1,
+                           0,0,
+                           1,1};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'y') {
+    bool PWMloc[MAXPWM] = {1,1,
+                           0,1,
+                           1,1};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'z') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           0,1,
+                           1,1};
+    sendPWM(PWMloc);
+  }
+}
+
+// the loop routine runs over and over again forever:
+void loop() {
+  
+  // As of right now this will only interpret characters of the alphabet A-Z upper or lower case. No punctuation.
+  // If you want to change how big the message is you can increment or decrease the number in brackets.
+  char message[1000] = "Type your message here";
+  
+  int i;
+  for(i = 0; i < message[i] != NULL; i++) {
+    
+    // Reads one character at a time
+    interpretChar(message[i]);
+    delay(1000);           // The pause in between each letter
+  }
+}  
+}
+
+// Find out what character we have
+void interpretChar(char c){
+  
+  // Essentially this converts an upper case character to a lower case
+  if(c >= A && c <= Z) {
+    c += 32;             // Increment by this much to reach lower case letters in ascii table
+  }
+  
+  // Find the letter we have
+  if(c == 'a') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           0,0,
+                           0,0};
+    sendPWM(PWMloc);
+  } 
+  
+  else if(c == 'b') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           1,0,
+                           0,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'c') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           0,0,
+                           0,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'd') {
+    bool PWMloc[MAXPWM] = {1,1,
+                           0,1,
+                           0,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'e') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           0,1,
+                           0,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'f') {
+    bool PWMloc[MAXPWM] = {1,1,
+                           1,0,
+                           0,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'g') {
+    bool PWMloc[MAXPWM] = {1,1,
+                           1,1,
+                           0,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'h') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           1,1,
+                           0,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'i') {
+    bool PWMloc[MAXPWM] = {0,1,
+                           1,0,
+                           0,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'j') {
+    bool PWMloc[MAXPWM] = {0,1,
+                           1,1,
+                           0,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'k') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           0,0,
+                           1,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'l') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           1,0,
+                           1,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'm') {
+    bool PWMloc[MAXPWM] = {1,1,
+                           0,0,
+                           1,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'n') {
+    bool PWMloc[MAXPWM] = {1,1,
+                           0,1,
+                           1,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'o') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           0,1,
+                           1,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'p') {
+    bool PWMloc[MAXPWM] = {1,1,
+                           1,0,
+                           1,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'q') {
+    bool PWMloc[MAXPWM] = {1,1,
+                           1,1,
+                           1,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'r') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           1,1,
+                           1,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 's') {
+    bool PWMloc[MAXPWM] = {0,1,
+                           1,0,
+                           1,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 't') {
+    bool PWMloc[MAXPWM] = {0,1,
+                           1,1,
+                           1,0};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'u') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           0,0,
+                           1,1};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'v') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           1,0,
+                           1,1};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'w') {
+    bool PWMloc[MAXPWM] = {0,1,
+                           1,1,
+                           0,1};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'x') {
+    bool PWMloc[MAXPWM] = {1,1,
+                           0,0,
+                           1,1};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'y') {
+    bool PWMloc[MAXPWM] = {1,1,
+                           0,1,
+                           1,1};
+    sendPWM(PWMloc);
+  }
+  
+  else if(c == 'z') {
+    bool PWMloc[MAXPWM] = {1,0,
+                           0,1,
+                           1,1};
+    sendPWM(PWMloc);
+  }
+}
+
+// the loop routine runs over and over again forever:
+void loop() {
+  
+  // As of right now this will only interpret characters of the alphabet A-Z upper or lower case. No punctuation.
+  // If you want to change how big the message is you can increment or decrease the number in brackets.
+  char message[1000] = "Type your message here";
+  
+  int i;
+  for(i = 0; i < message[i] != NULL; i++) {
+    
+    // Reads one character at a time
+    interpretChar(message[i]);
+    delay(1000);           // The pause in between each letter
+  }
+}
