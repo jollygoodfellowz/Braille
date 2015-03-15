@@ -1,1 +1,1 @@
-# Braille
+This project takes any keystrokes by a user and spits out vibration patterns in Braille form. 
