@@ -43,6 +43,7 @@ void setup() {
   pinMode(G11, OUTPUT);
   pinMode(G20, OUTPUT);
   pinMode(G21, OUTPUT);
+  Serial.begin(9600);
 }
 
 // Interpret the message recieved, boolean array representing braille alphabet
