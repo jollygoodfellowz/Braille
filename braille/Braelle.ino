@@ -253,9 +253,10 @@ void loop() {
   
   int length = Serial.available();
   Serial.readBytes(message, length);
-  
   int i;
   for(i = 0; i < message[i] != NULL; i++) 
+  {
+    Serial.println(message);
     interpretChar(message[i]);            // Reads one character at a time
-    
+  } 
 }
